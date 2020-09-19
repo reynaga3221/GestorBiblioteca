@@ -13,7 +13,7 @@ namespace GestorBiblioteca.WebApi.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warmssdsad", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Ruta", "Bracing", "Chilly", "Cool", "Mild", "Warmssdsad", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
