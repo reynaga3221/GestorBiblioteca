@@ -1,3 +1,11 @@
+using AutoMapper;
+using GestorBiblioteca.Interfaces;
+using GestorBiblioteca.Interfaces.Repositories;
+using GestorBiblioteca.Interfaces.Services;
+using GestorBiblioteca.Mappers.DomainContract;
+using GestorBiblioteca.Repositories;
+using GestorBiblioteca.Services;
+using GestorBiblioteca.WebApi.Setup;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +36,17 @@ namespace GestorBiblioteca.WebApi
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddSwaggerGen();
+
+            services.AddSingleton<IConnectionParameters, DbInstaller>();
+
+            services.AddAutoMapper(typeof(UserProfile));
+
+            //services
+            services.AddScoped<IUserService, UserService>();
+            //repositories
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +67,13 @@ namespace GestorBiblioteca.WebApi
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -66,6 +92,7 @@ namespace GestorBiblioteca.WebApi
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
         }
     }
 }

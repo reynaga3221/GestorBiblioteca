@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorBiblioteca.WebApi", "GestorBiblioteca.WebApi\GestorBiblioteca.WebApi.csproj", "{2EB65E40-FBDD-4A2C-A8CF-9E955ED782CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorBiblioteca.WebApi", "GestorBiblioteca.WebApi\GestorBiblioteca.WebApi.csproj", "{2EB65E40-FBDD-4A2C-A8CF-9E955ED782CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorBiblioteca.Entities", "GestorBiblioteca.Entities\GestorBiblioteca.Entities.csproj", "{AD647299-4772-4EA1-B37E-589669593754}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorBiblioteca.Services", "GestorBiblioteca.Services\GestorBiblioteca.Services.csproj", "{6CCBB45A-4686-467A-9C0B-FC0FC7A07401}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorBiblioteca.Repositories", "GestorBiblioteca.Repositories\GestorBiblioteca.Repositories.csproj", "{E00FF27D-CB9F-41AD-A454-79233BE545E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorBiblioteca.Interfaces", "GestorBiblioteca.Interfaces\GestorBiblioteca.Interfaces.csproj", "{2DD7ACC8-7ED7-47C6-86BD-057C3C5BCCE5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestorBiblioteca.Mappers", "GestorBiblioteca.Mappers\GestorBiblioteca.Mappers.csproj", "{E9514EAB-13B5-4403-AC7B-8CD8017CEAF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorBiblioteca.ContractModels", "ContractModels\GestorBiblioteca.ContractModels.csproj", "{F4E6DF89-2117-4C08-9ADC-163584471BA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +27,30 @@ Global
 		{2EB65E40-FBDD-4A2C-A8CF-9E955ED782CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EB65E40-FBDD-4A2C-A8CF-9E955ED782CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EB65E40-FBDD-4A2C-A8CF-9E955ED782CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD647299-4772-4EA1-B37E-589669593754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD647299-4772-4EA1-B37E-589669593754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD647299-4772-4EA1-B37E-589669593754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD647299-4772-4EA1-B37E-589669593754}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCBB45A-4686-467A-9C0B-FC0FC7A07401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CCBB45A-4686-467A-9C0B-FC0FC7A07401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CCBB45A-4686-467A-9C0B-FC0FC7A07401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CCBB45A-4686-467A-9C0B-FC0FC7A07401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E00FF27D-CB9F-41AD-A454-79233BE545E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E00FF27D-CB9F-41AD-A454-79233BE545E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E00FF27D-CB9F-41AD-A454-79233BE545E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E00FF27D-CB9F-41AD-A454-79233BE545E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DD7ACC8-7ED7-47C6-86BD-057C3C5BCCE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DD7ACC8-7ED7-47C6-86BD-057C3C5BCCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DD7ACC8-7ED7-47C6-86BD-057C3C5BCCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DD7ACC8-7ED7-47C6-86BD-057C3C5BCCE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9514EAB-13B5-4403-AC7B-8CD8017CEAF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9514EAB-13B5-4403-AC7B-8CD8017CEAF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9514EAB-13B5-4403-AC7B-8CD8017CEAF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9514EAB-13B5-4403-AC7B-8CD8017CEAF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E6DF89-2117-4C08-9ADC-163584471BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E6DF89-2117-4C08-9ADC-163584471BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E6DF89-2117-4C08-9ADC-163584471BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E6DF89-2117-4C08-9ADC-163584471BA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
