@@ -30,6 +30,11 @@
     <ProjectReference Include="..\GestorBiblioteca.Services\GestorBiblioteca.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ClientApp\src\components\clients\" />
+    <Folder Include="ClientApp\src\components\loans\" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
