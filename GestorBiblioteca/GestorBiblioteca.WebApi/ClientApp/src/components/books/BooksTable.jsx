@@ -7,19 +7,22 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import FaceIcon from '@material-ui/icons/Face';
+import DoneIcon from '@material-ui/icons/Done';
+import Chip from '@material-ui/core/Chip';
+import Button from '@material-ui/core/Button';
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
     },
     tableCell: {
-        fontWeight:"bold",
+        fontWeight: "bold",
     }
 });
-    
-const Table2 = ({ books}) => {
+
+const BookTable = ({ books, handleDeleteBook, handleUpdateBook }) => {
     const classes = useStyles();
-    debugger;
+    
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} size="small" aria-label="a dense table">
@@ -28,7 +31,8 @@ const Table2 = ({ books}) => {
                         <TableCell className={classes.tableCell}>Titulo</TableCell>
                         <TableCell className={classes.tableCell} align="right">Autor</TableCell>
                         <TableCell className={classes.tableCell} align="right">Cantidad</TableCell>
-                        <TableCell className={classes.tableCell} align="right">Fecha de Publicacion</TableCell>                        
+                        <TableCell className={classes.tableCell} align="right">Fecha de Publicacion</TableCell>
+                        <TableCell className={classes.tableCell} align="right"></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -39,7 +43,27 @@ const Table2 = ({ books}) => {
                             </TableCell>
                             <TableCell align="right">{row.author}</TableCell>
                             <TableCell align="right">{row.totalQuantity}</TableCell>
-                            <TableCell align="right">{row.publishedDate}</TableCell>                            
+                            <TableCell align="right">{row.publishedDate}</TableCell>
+                            <TableCell align="right">
+                                <Button color="primary">
+                                    <Chip
+                                    label="Editar"
+                                    clickable
+                                    color="primary"
+                                    onClick={handleUpdateBook}
+                                    icon={<FaceIcon />}
+                                    />
+                                </Button>
+                                <Button color="primary">
+                                    <Chip
+                                    label="Eliminar"
+                                    clickable
+                                    color="secondary"
+                                    onClick={handleDeleteBook}
+                                    icon={<DoneIcon />}
+                                    />
+                                </Button>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -47,4 +71,4 @@ const Table2 = ({ books}) => {
         </TableContainer>
     );
 }
-export default Table2;
+export default BookTable;
