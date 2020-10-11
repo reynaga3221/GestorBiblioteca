@@ -1,4 +1,5 @@
 using AutoMapper;
+using GestorBiblioteca.Entities;
 using GestorBiblioteca.Interfaces;
 using GestorBiblioteca.Interfaces.Repositories;
 using GestorBiblioteca.Interfaces.Services;
@@ -45,8 +46,10 @@ namespace GestorBiblioteca.WebApi
 
             //services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBookService,BookService>();
             //repositories
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBookRepository,BookRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
