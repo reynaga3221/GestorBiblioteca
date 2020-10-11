@@ -39,14 +39,14 @@ export default class BaseService {
         });
     }
 
-    GetBlob(endpoint, params) {
-        return axios({
-            url: endpoint,
-            params: params,
-            method: 'GET',
-            responseType: 'blob'
-        });
-    }
+    //GetBlob(endpoint, params) {
+    //    return axios({
+    //        url: endpoint,
+    //        params: params,
+    //        method: 'GET',
+    //        responseType: 'blob'
+    //    });
+    //}
 
     PostBlob(endpoint, file) {
         var formData = new FormData();

@@ -3,6 +3,7 @@ using GestorBiblioteca.Interfaces.Repositories;
 using GestorBiblioteca.Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GestorBiblioteca.Services
@@ -14,9 +15,26 @@ namespace GestorBiblioteca.Services
         {
             _repository = bookRepository;
         }
+        public void Create(Book domain)
+        {
+            _repository.Save(domain);
+        }
+
+        public void Update(Book domain)
+        {
+            _repository.Update(domain);
+        }
+        public Book GetById(int idBook)
+        {
+            return _repository.GetAll().Where(x=>x.IdBook == idBook).FirstOrDefault();
+        }
         public IEnumerable<Book> GetAll()
         {
             return _repository.GetAll();
+        }
+        public void Delete(int id)
+        {
+            _repository.Delete(id);
         }
     }
 }

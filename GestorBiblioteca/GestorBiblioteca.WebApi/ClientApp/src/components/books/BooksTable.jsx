@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     }
 });
 
-const BookTable = ({ books, handleDeleteBook, handleUpdateBook }) => {
+const BookTable = ({ books, handleDeleteBook, handleEditSelection }) => {
     const classes = useStyles();
     
     return (
@@ -50,7 +50,7 @@ const BookTable = ({ books, handleDeleteBook, handleUpdateBook }) => {
                                     label="Editar"
                                     clickable
                                     color="primary"
-                                    onClick={handleUpdateBook}
+                                    onClick={() => handleEditSelection(row.idBook) }
                                     icon={<FaceIcon />}
                                     />
                                 </Button>
