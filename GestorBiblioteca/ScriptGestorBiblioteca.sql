@@ -15,4 +15,19 @@ CREATE TABLE GestorBiblioteca.dbo.Users (
 INSERT INTO Users
 VALUES ('Santiago Reynaga', 'admin', 'admin');
 
+
+
 select * from Users
+
+CREATE TABLE GestorBiblioteca.dbo.Books (
+	IdBook int NOT NULL IDENTITY(1, 1),
+	 Title varchar(255) NOT NULL,
+	 Author varchar(255) NOT NULL,
+	 TotalQuantity varchar(255) NOT NULL,
+	 PublishedDate DATE not null
+);
+
+INSERT INTO Books
+VALUES ('Caperusita Rosa', 'Fulanita', '10',GETDATE());
+
+SELECT * FROM Books

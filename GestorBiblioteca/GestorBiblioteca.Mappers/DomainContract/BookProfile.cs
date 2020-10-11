@@ -13,7 +13,7 @@ namespace GestorBiblioteca.Mappers.DomainContract
         public BookProfile()
         {
             CreateMap<Book, BookResponse>().ForMember(dest => dest.PublishedDate,
-                opt => opt.MapFrom(src => src.PublishedDate != null ? src.PublishedDate.ToString("dd/MM/yyyy") : ""));
+                opt => opt.MapFrom(src => src.PublishedDate != null ? src.PublishedDate.ToString("yyyy/MM/dd") : ""));
             CreateMap<BookRequets, Book>().ForMember(dest => dest.PublishedDate,
                 opt => opt.MapFrom(src => Convert.ToDateTime(src.PublishedDate)));
 

@@ -11,6 +11,7 @@ export default class BookService extends BaseService {
     }
 
     AddBook(book) {
+        debugger;
         return super.Post('/Book', book);
     }
 

@@ -7,45 +7,80 @@ import BooksForm from './BooksForm';
 import BookTable from "./BooksTable";
 
 let emptyBook = {
-    idBook: '', title: '', author: '', totalQuantity: '', publishedDate: ''
+    idBook: 0, title: '', author: '', totalQuantity: '', publishedDate: '2000/08/18'
 };
 
 const BooksComponent = ({ classes }) => {
 
     const [books, setBooks] = useState([]);
     const [currentBook, setCurrentBook] = useState(emptyBook);
+    const [isEditing, setIsEditing] = useState(false);
     const bookService = new BookService();
 
+    
+    useEffect(() => {
+        loadGrid();
+    }, []);
 
-
-    const cleanScreen = () => {
-        
-        setCurrentBook(emptyBook);      
-    };
-
+    //ABM
     const addOrUpdateBook = () => {
-        console.log("add");
+
+        if (isEditing) {
+            bookService.UpdateBook(currentBook).then(res => {
+                setCurrentBook(emptyBook);
+                loadGrid();
+                alert("Libro Actualizado");
+            }).catch(res => {
+                console.error(res);
+                alert(res);
+            });
+        } else {
+            bookService.AddBook(currentBook).then(res => {
+                setCurrentBook(emptyBook);
+                loadGrid();
+                alert("Libro Agregado");
+            }).catch(res => {
+                console.error(res);
+                alert(res);
+            });
+        }
+        
     };
 
-    const setFormUpdate = () => {
-        console.log("lleno formualrio");
-    };
 
     const deleteBook = () => {
         console.log("delete");
     };
 
-    useEffect(() => {
-        loadGrid();
-    }, []);
+    //FORM
+    const cleanScreen = () => {
 
+        setCurrentBook(emptyBook);
+    };
+
+    const setSelectedDate = (date) => {
+        setCurrentBook({ ...currentBook, publishedDate: date })
+        console.log(date);
+    };     
+
+    const editSelection = (idBook) => {
+        
+        bookService.GetBookById(idBook).then(res => {
+            setIsEditing(true);
+            setCurrentBook(res.data);                      
+        }).catch(res => 
+            console.log(res)
+        );
+    };
+
+    //TABLE
     const loadGrid = () => {
         bookService.GetBooks().then(res => {
             console.log(res.data);
             setBooks(res.data);
-        }      
+        }
         ).catch(res => {
-           console.log("Error")
+            console.log("Error")
         });
     }
 
@@ -54,7 +89,11 @@ const BooksComponent = ({ classes }) => {
         <div className={classes.root}>
             <Grid container spacing={2}>
             <Typography variant="h6" gutterBottom>
-                Agregar Nuevo Libro
+                        {
+                            currentBook.idBook !== 0 ?
+                                 'Edición ' + currentBook.title
+                                :'Agregar Nuevo Libro' 
+                        }
             </Typography>
                 <Grid item xs={12}>
                     <Paper elevation={0} className={classes.paper}>
@@ -62,6 +101,7 @@ const BooksComponent = ({ classes }) => {
                                 book={currentBook}
                                 setBook={(book) => setCurrentBook(book)}
                                 handleAddBook={addOrUpdateBook}
+                                handleSetSelectedDate={setSelectedDate}
                                 handleCleanBook={cleanScreen}                              
                             ></BooksForm>
                     </Paper>
@@ -71,10 +111,10 @@ const BooksComponent = ({ classes }) => {
                             Lista de Libros
                         </Typography>
                     <Paper elevation={0} className={classes.paper}>
-                            <BookTable
+                            <BookTable                                
                                 books={books}
                                 handleDeleteBook={deleteBook}
-                                handleUpdateBook={setFormUpdate}
+                                handleEditSelection={editSelection}
                             />
                     </Paper>
                 </Grid>
