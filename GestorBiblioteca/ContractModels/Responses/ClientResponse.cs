@@ -4,9 +4,9 @@ using System.Text;
 
 namespace GestorBiblioteca.ContractModels.Responses
 {
-    public class ClienteResponse
+    public class ClientResponse
     {
-        public int Idcliente { get; set; }
+        public int Idclient { get; set; }
         public int DNI { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }

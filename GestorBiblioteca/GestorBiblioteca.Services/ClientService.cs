@@ -8,27 +8,27 @@ using System.Linq;
 
 namespace GestorBiblioteca.Services
 {
-    public class ClientService : IClienteService
+    public class ClientService : IClientService
     {
-        private readonly IClienteRepository _repository;
-        public ClientService(IClienteRepository clienteRepository)
+        private readonly IClientRepository _repository;
+        public ClientService(IClientRepository clienteRepository)
         {
             _repository = clienteRepository;
         }
-        public void Create(Clientes domain)
+        public void Create(Clients domain)
         {
             _repository.Save(domain);
         }
 
-        public void Update(Clientes domain)
+        public void Update(Clients domain)
         {
             _repository.Update(domain);
         }
-        public Clientes GetById(int idcliente)
+        public Clients GetById(int idcliente)
         {
-            return _repository.GetAll().Where(x => x.Idcliente == idcliente).FirstOrDefault();
+            return _repository.GetAll().Where(x => x.Idclient == idcliente).FirstOrDefault();
         }
-        public IEnumerable<Clientes> GetAll()
+        public IEnumerable<Clients> GetAll()
         {
             return _repository.GetAll();
         }

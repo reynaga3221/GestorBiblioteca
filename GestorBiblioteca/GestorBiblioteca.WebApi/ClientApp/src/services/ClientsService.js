@@ -10,13 +10,13 @@ export default class ClientsService extends BaseService {
         return super.GetResource('/Client', id);
     }
 
-    AddClient(cliente) {
+    AddClient(client) {
         debugger;
-        return super.Post('/Client', cliente);
+        return super.Post('/Client', client);
     }
 
-    UpdateClient(cliente) {
-        return super.Put('/Client', cliente);
+    UpdateClient(client) {
+        return super.Put('/Client', client);
     }
 
     DeleteClient(id) {

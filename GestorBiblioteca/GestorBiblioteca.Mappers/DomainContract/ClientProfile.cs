@@ -12,8 +12,8 @@ namespace GestorBiblioteca.Mappers.DomainContract
     {
         public ClienteProfile()
         {
-            CreateMap<Clientes, ClienteResponse>();
-            CreateMap<ClienteRequets, Clientes>();
+            CreateMap<Clients, ClientResponse>();
+            CreateMap<ClientRequets, Clients>();
         }
     }
 }

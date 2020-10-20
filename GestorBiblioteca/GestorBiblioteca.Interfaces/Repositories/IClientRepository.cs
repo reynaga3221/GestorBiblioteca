@@ -5,11 +5,11 @@ using GestorBiblioteca.Entities;
 
 namespace GestorBiblioteca.Interfaces.Repositories
 {
-    public interface IClienteRepository
+    public interface IClientRepository
     {
-        void Update(Clientes domain);
-        void Save(Clientes domain);
+        void Update(Clients domain);
+        void Save(Clients domain);
         void Delete(int id);
-        IEnumerable<Clientes> GetAll();
+        IEnumerable<Clients> GetAll();
     }
 }

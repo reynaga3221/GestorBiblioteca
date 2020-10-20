@@ -5,12 +5,12 @@ using GestorBiblioteca.Entities;
 
 namespace GestorBiblioteca.Interfaces.Services
 {
-    public interface IClienteService
+    public interface IClientService
     {
-        void Update(Clientes domain);
-        void Create(Clientes domain);
+        void Update(Clients domain);
+        void Create(Clients domain);
         void Delete(int id);
-        Clientes GetById(int id);
-        IEnumerable<Clientes> GetAll();
+        Clients GetById(int id);
+        IEnumerable<Clients> GetAll();
     }
 }

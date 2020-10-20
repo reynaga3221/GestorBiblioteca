@@ -14,13 +14,13 @@ namespace GestorBiblioteca.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class ClientController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IClienteService _clienteService;
-        public ClienteController(IMapper mapper, IClienteService clienteService)
+        private readonly IClientService _ClientService;
+        public ClientController(IMapper mapper, IClientService ClientService)
         {
-            _clienteService = clienteService;
+            _ClientService = ClientService;
             _mapper = mapper;
         }
 
@@ -28,39 +28,39 @@ namespace GestorBiblioteca.WebApi.Controllers
         [HttpGet]
         public IEnumerable<ClientResponse> Get()
         {
-            var response = _mapper.Map<IEnumerable<ClientResponse>>(_clienteService.GetAll());
+            var response = _mapper.Map<IEnumerable<ClientResponse>>(_ClientService.GetAll());
             return response;
         }
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
 
-            var response = _mapper.Map<ClientResponse>(_clienteService.GetById(Convert.ToInt32(id)));
+            var response = _mapper.Map<ClientResponse>(_ClientService.GetById(Convert.ToInt32(id)));
 
             return Ok(response);
         }
         [HttpPut]
-        public IActionResult Put(ClientRequets clienteRequets)
+        public IActionResult Put(ClientRequets ClientRequets)
         {
 
-            var domainUser = _mapper.Map<Clientes>(clienteRequets);
-            _clienteService.Update(domainUser);
+            var domainUser = _mapper.Map<Clients>(ClientRequets);
+            _ClientService.Update(domainUser);
 
-            return Ok(clienteRequets);
+            return Ok(ClientRequets);
         }
         [HttpPost]
-        public IActionResult Post(ClientRequets clienteRequets)
+        public IActionResult Post(ClientRequets ClientRequets)
         {
             try
             {
-                var domain = _mapper.Map<Clientes>(clienteRequets);
-                _clienteService.Create(domain);
-                return Created("/Cliente/" + domain.Idcliente, clienteRequets);
+                var domain = _mapper.Map<Clients>(ClientRequets);
+                _ClientService.Create(domain);
+                return Created("/Client/" + domain.Idclient, ClientRequets);
 
             }
             catch (Exception ex)
             {
-                return Conflict(new { body = clienteRequets, message = ex.Message });
+                return Conflict(new { body = ClientRequets, message = ex.Message });
             }
         }
         [HttpDelete("{id}")]
@@ -68,7 +68,7 @@ namespace GestorBiblioteca.WebApi.Controllers
         {
             try
             {
-                _clienteService.Delete(Convert.ToInt32(id));
+                _ClientService.Delete(Convert.ToInt32(id));
                 return Ok();
             }
             catch (Exception ex)
