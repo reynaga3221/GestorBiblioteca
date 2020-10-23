@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 
 const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
     const classes = useStyles();
-    
+    debugger;
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} size="small" aria-label="a dense table">
@@ -38,7 +38,7 @@ const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
                 </TableHead>
                 <TableBody>
                     {clients.map((row) => (
-                        <TableRow key={row.idclient}>
+                        <TableRow key={row.idcliente}>
                             <TableCell component="th" scope="row">{row.nombre}</TableCell>
                             <TableCell align="right">{row.apellido}</TableCell>
                             <TableCell align="right">{row.telefono}</TableCell>
@@ -50,7 +50,7 @@ const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
                                     label="Editar"
                                     clickable
                                     color="primary"
-                                    onClick={() => handleEditSelection(row.idclient) }
+                                    onClick={() => handleEditSelection(row.idcliente) }
                                     icon={<FaceIcon />}
                                     />
                                 </Button>
@@ -59,7 +59,7 @@ const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
                                     label="Eliminar"
                                     clickable
                                     color="secondary"
-                                    onClick={handleDeleteClient}
+                                    onClick={() => handleDeleteClient(row.idcliente)}
                                     icon={<DoneIcon />}
                                     />
                                 </Button>

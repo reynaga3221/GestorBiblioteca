@@ -18,7 +18,7 @@ namespace GestorBiblioteca.Repositories
         {
             using (var connection = this.GetConnection())
             {
-                var clients = connection.Query<Clients>(@"SELECT * FROM clients ");
+                var clients = connection.Query<Clients>(@"SELECT * FROM clientes ");
 
                 return clients.AsQueryable();
             }
@@ -35,17 +35,17 @@ namespace GestorBiblioteca.Repositories
         {
             using (var connection = this.GetConnection())
             {
-                var affectedRows = connection.Execute("UPDATE clientes SET DNI = @DNI, Nombre = @Nombre, Apellido = @Apellido, telefono = @telefono, Mail = @Mail WHERE Idcliente = @Idcliente", new { DNI = domain.DNI, Nombre = domain.Nombre, Apellido = domain.Apellido, Telefono = domain.Telefono, Mail = domain.Mail, Idclient = domain.Idclient });
+                var affectedRows = connection.Execute("UPDATE clientes SET DNI = @DNI, Nombre = @Nombre, Apellido = @Apellido, telefono = @telefono, Mail = @Mail WHERE Idcliente = @Idcliente", new { DNI = domain.DNI, Nombre = domain.Nombre, Apellido = domain.Apellido, Telefono = domain.Telefono, Mail = domain.Mail, Idcliente = domain.Idcliente });
 
             }
         }
         public void Delete(int id)
         {
-            /*using (var connection = this.GetConnection())
+            using (var connection = this.GetConnection())
             {
-                var affectedRows = connection.Execute("UPDATE Books SET Title = @Title, Author = @Author, TotalQuantity = @TotalQuantity, PublishedDate = @PublishedDate WHERE IdBook = @IdBook");
-
-            }*/
+                var affectedRows = connection.Execute("DELETE FROM  clientes  WHERE Idcliente = @Idcliente", new { Idcliente = id });
+            }
+          
         }
     }
 }

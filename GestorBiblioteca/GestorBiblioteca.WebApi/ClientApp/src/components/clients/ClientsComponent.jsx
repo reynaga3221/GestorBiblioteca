@@ -7,7 +7,7 @@ import ClientsForm from './ClientsForm';
 import ClientsTable from "./ClientsTable";
 
 let emptyClient = {
-    idClient: 0, nombre: '', apellido: '', dni: '', telefono: '', mail: ''
+    idcliente: 0, nombre: '', apellido: '', dni: '', telefono: '', mail: ''
 };
 
 const ClientsComponent = ({ classes }) => {
@@ -24,10 +24,11 @@ const ClientsComponent = ({ classes }) => {
 
     //ABM
     const addOrUpdateClient = () => {
-
+        debugger;
         if (isEditing) {
             ClientService.UpdateClient(currentClient).then(res => {
                 setCurrentClient(emptyClient);
+                setIsEditing(false);
                 loadGrid();
                 alert("Cliente Actualizado");
             }).catch(res => {
@@ -37,6 +38,7 @@ const ClientsComponent = ({ classes }) => {
         } else {
             ClientService.AddClient(currentClient).then(res => {
                 setCurrentClient(emptyClient);
+                setIsEditing(false);
                 loadGrid();
                 alert("Cliente Agregado");
             }).catch(res => {
@@ -48,14 +50,23 @@ const ClientsComponent = ({ classes }) => {
     };
 
 
-    const deleteClient = () => {
-        console.log("delete");
+    const deleteClient = (idcliente) => {
+        ClientService.DeleteClient(idcliente).then(res => {
+            setCurrentClient(emptyClient);
+            setIsEditing(false);
+            loadGrid();
+            alert("Cliente Eliminado ");
+        }).catch(res => {
+            console.error(res);
+            alert(res);
+        });
     };
 
     //FORM
     const cleanScreen = () => {
 
         setCurrentClient(emptyClient);
+        setIsEditing(false);
     };
 
     /*const setSelectedDate = (date) => {
@@ -64,7 +75,7 @@ const ClientsComponent = ({ classes }) => {
     };*/
 
     const editSelection = (idClient) => {
-
+        debugger;
         ClientService.GetClientById(idClient).then(res => {
             setIsEditing(true);
             setCurrentClient(res.data);
@@ -90,7 +101,7 @@ const ClientsComponent = ({ classes }) => {
                 <Grid container spacing={2}>
                     <Typography variant="h6" gutterBottom>
                         {
-                            currentClient.idclient !== 0 ?
+                            currentClient.idcliente !== 0 ?
                                 'Edicion ' + currentClient.nombre + " " + currentClient.apellido
                                 : 'Agregar Nuevo Cliente'
                         }

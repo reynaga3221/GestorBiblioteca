@@ -26,7 +26,7 @@ namespace GestorBiblioteca.Services
         }
         public Clients GetById(int idcliente)
         {
-            return _repository.GetAll().Where(x => x.Idclient == idcliente).FirstOrDefault();
+            return _repository.GetAll().Where(x => x.Idcliente == idcliente).FirstOrDefault();
         }
         public IEnumerable<Clients> GetAll()
         {

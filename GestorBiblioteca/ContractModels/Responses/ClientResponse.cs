@@ -6,11 +6,11 @@ namespace GestorBiblioteca.ContractModels.Responses
 {
     public class ClientResponse
     {
-        public int Idclient { get; set; }
-        public int DNI { get; set; }
+        public int Idcliente { get; set; }
+        public string DNI { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public int telefono { get; set; }
+        public string telefono { get; set; }
         public string Mail { get; set; }
     }
 }

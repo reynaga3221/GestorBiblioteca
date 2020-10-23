@@ -28,6 +28,7 @@ const BooksComponent = ({ classes }) => {
         if (isEditing) {
             bookService.UpdateBook(currentBook).then(res => {
                 setCurrentBook(emptyBook);
+                setIsEditing(false);
                 loadGrid();
                 alert("Libro Actualizado");
             }).catch(res => {
@@ -37,6 +38,7 @@ const BooksComponent = ({ classes }) => {
         } else {
             bookService.AddBook(currentBook).then(res => {
                 setCurrentBook(emptyBook);
+                setIsEditing(false);
                 loadGrid();
                 alert("Libro Agregado");
             }).catch(res => {
@@ -56,6 +58,7 @@ const BooksComponent = ({ classes }) => {
     const cleanScreen = () => {
 
         setCurrentBook(emptyBook);
+        setIsEditing(false);
     };
 
     const setSelectedDate = (date) => {

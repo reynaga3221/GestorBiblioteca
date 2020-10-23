@@ -55,7 +55,7 @@ namespace GestorBiblioteca.WebApi.Controllers
             {
                 var domain = _mapper.Map<Clients>(ClientRequets);
                 _ClientService.Create(domain);
-                return Created("/Client/" + domain.Idclient, ClientRequets);
+                return Created("/Client/" + domain.Idcliente, ClientRequets);
 
             }
             catch (Exception ex)
@@ -64,11 +64,11 @@ namespace GestorBiblioteca.WebApi.Controllers
             }
         }
         [HttpDelete("{id}")]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                _ClientService.Delete(Convert.ToInt32(id));
+                _ClientService.Delete(id);
                 return Ok();
             }
             catch (Exception ex)
