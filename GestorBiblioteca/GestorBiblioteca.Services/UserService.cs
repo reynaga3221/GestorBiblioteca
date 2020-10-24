@@ -17,6 +17,11 @@ namespace GestorBiblioteca.Services
             _repository = userRepository;
         }
 
+        public bool Login(User user)
+        {
+            var users = _repository.GetAll();
+            return users.Any(u => u.Password == user.Password && u.UserName == user.UserName);
+        }
         public IEnumerable<User> GetAll()
         {
             return _repository.GetAll();
