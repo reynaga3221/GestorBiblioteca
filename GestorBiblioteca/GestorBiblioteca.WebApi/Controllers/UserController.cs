@@ -31,14 +31,15 @@ namespace GestorBiblioteca.WebApi.Controllers
             return new string[] { "value1", "value2" };
         }
 
-
         // POST: api/User
         [HttpPost("Login")]
-        public void Login([FromBody] UserRequets userRequets)
+        public bool Login([FromBody] UserRequets userRequets)
         {
             var domain = _mapper.Map<User>(userRequets);
 
-            var users = _userService.GetAll();
+            var result = _userService.Login(domain);
+
+            return result;
         }
     }
 }
