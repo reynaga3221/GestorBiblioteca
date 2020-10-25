@@ -48,10 +48,12 @@ namespace GestorBiblioteca.WebApi
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IBookService,BookService>();
             services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<ILoanService, LoanService>();
             //repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IBookRepository,BookRepository>();
             services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<ILoanRepository, LoanRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

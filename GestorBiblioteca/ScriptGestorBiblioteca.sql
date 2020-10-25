@@ -17,7 +17,7 @@ VALUES ('Santiago Reynaga', 'admin', 'admin');
 
 
 
-select * from Users
+
 
 CREATE TABLE GestorBiblioteca.dbo.Books (
 	IdBook int NOT NULL IDENTITY(1, 1),
@@ -27,10 +27,7 @@ CREATE TABLE GestorBiblioteca.dbo.Books (
 	 PublishedDate DATE not null
 );
 
-INSERT INTO Books
-VALUES ('Caperusita Rosa', 'Fulanita', '10',GETDATE());
 
-SELECT * FROM Books
 
 CREATE TABLe clientes (
 	Idcliente int NOT NULL IDENTITY(1, 1),
@@ -42,7 +39,12 @@ CREATE TABLe clientes (
 );
 
 
-select * from clientes  
 
-INSERT INTO clientes
-VALUES (42300840, 'matias', 'garone', 1121551727,'tumami@tupapa.com')
+
+CREATE TABLE GestorBiblioteca.dbo.Loans (
+	 IdLoan int NOT NULL IDENTITY(1, 1),
+	 LoanDate DATE not null,
+	 ReturnDate DATE  null,
+	 IdBook int NOT Null,
+	 idcliente int not null
+);
