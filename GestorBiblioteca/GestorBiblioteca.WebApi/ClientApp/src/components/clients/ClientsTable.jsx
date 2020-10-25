@@ -11,6 +11,7 @@ import FaceIcon from '@material-ui/icons/Face';
 import DoneIcon from '@material-ui/icons/Done';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
@@ -41,8 +42,8 @@ const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
                         <TableRow key={row.idcliente}>
                             <TableCell component="th" scope="row">{row.nombre}</TableCell>
                             <TableCell align="right">{row.apellido}</TableCell>
-                            <TableCell align="right">{row.telefono}</TableCell>
                             <TableCell align="right">{row.dni}</TableCell>
+                            <TableCell align="right">{row.telefono}</TableCell>
                             <TableCell align="right">{row.mail}</TableCell>
                             <TableCell align="right">
                                 <Button color="primary">
@@ -60,7 +61,7 @@ const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
                                     clickable
                                     color="secondary"
                                     onClick={() => handleDeleteClient(row.idcliente)}
-                                    icon={<DoneIcon />}
+                                    icon={<DeleteIcon />}
                                     />
                                 </Button>
                             </TableCell>
