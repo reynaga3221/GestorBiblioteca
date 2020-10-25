@@ -15,13 +15,17 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import MailIcon from '@material-ui/icons/Mail';
+import PeopleIcon from '@material-ui/icons/People';
 import { Link } from "react-router-dom";
 import BooksComponent from '../books/BooksComponent';
 import ClientsComponent from '../clients/ClientsComponent';
 import HomeComponent from '../home/HomeComponent';
 import LoansBooksComponent from '../loansBooks/LoansBooksComponent';
 import inquirieBooksComponent from '../inquiries/inquirieBooksComponent';
+import SendIcon from '@material-ui/icons/Send';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import Login from './Login';
 const drawerWidth = 200;
 
@@ -163,25 +167,25 @@ export default function Sidebar() {
                     <List>
                         <Link to='./books'>
                             <ListItem button key={"Libros"}>
-                                <ListItemIcon> <InboxIcon color="primary" /></ListItemIcon>
+                                <ListItemIcon> <MenuBookIcon color="primary" /></ListItemIcon>
                                 <ListItemText primary={"Libros"} />
                             </ListItem>
                         </Link>
                         <Link to='./clients'>
                             <ListItem button key={"Clientes"}>
-                                <ListItemIcon> <MailIcon color="primary" /></ListItemIcon>
+                                <ListItemIcon> <PeopleIcon color="primary" /></ListItemIcon>
                                 <ListItemText primary={"Clientes"} />
                             </ListItem>
                         </Link>
                         <Link to='./loans'>
                             <ListItem button key={"Prestamos"}>
-                                <ListItemIcon> <InboxIcon color="primary" /></ListItemIcon>
+                                <ListItemIcon> <SendIcon color="primary" /></ListItemIcon>
                                 <ListItemText primary={"Prestamos"} />
                             </ListItem>
                         </Link>
                         <Link to='./inquirie'>
                             <ListItem button key={"Consultas"}>
-                                <ListItemIcon> <MailIcon color="primary" /></ListItemIcon>
+                                <ListItemIcon> <AssessmentIcon color="primary" /></ListItemIcon>
                                 <ListItemText primary={"Consultas"} />
                             </ListItem>
                         </Link>
