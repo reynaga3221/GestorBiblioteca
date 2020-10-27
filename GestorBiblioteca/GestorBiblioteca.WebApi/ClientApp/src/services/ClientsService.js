@@ -1,6 +1,6 @@
 ﻿import BaseService from './BaseService';
 
-export default class ClientsService extends BaseService {
+export default class loanService extends BaseService {
 
     GetClients() {
         return super.Get('/Client');

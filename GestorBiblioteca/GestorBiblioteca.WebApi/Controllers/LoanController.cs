@@ -34,11 +34,11 @@ namespace GestorBiblioteca.WebApi.Controllers
             return response;
         }
         [HttpGet("GetAllByDni")]
-        public IEnumerable<LoanResponse> GetAllByDni(int dni)
+        public IEnumerable<LoanResponse> GetAllByDni(string dni)
         {
 
             
-            var response = _mapper.Map<IEnumerable<LoanResponse>>(_loanService.GetAllByDni(dni));
+            var response = _mapper.Map<IEnumerable<LoanResponse>>(_loanService.GetAllByDni(Convert.ToInt32(dni)));
 
             return response;
         }
