@@ -2,20 +2,16 @@ import React, { useState, useEffect } from "react";
 import themeStyles from '../../styles/styles';
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, Paper, TextField, Typography } from '@material-ui/core';
-import loanService from '../../services/LoanService';
-import LoanForm from './LoanForm';
-import LoanTable from "./LoanTable";
-
-let emptyLoan = {
-    idloan: 0, loanDate: '', returnDate: '', idBook: '', idCliente: ''
-};
+import LoanBookService from '../../services/LoanBookService';
+import LoanForm from './LoansForm';
+import LoanTable from "./LoansTable";
 
 const LoansBooksComponent = ({ classes }) => {
 
-    const [loanbook, setLoanbook] = useState([]);
-    const [currentLoan, setCurrentLoan] = useState(emptyLoan);
+    const [loanBooks, setLoanBooks] = useState([]);
+    const [book, setBook] = useState("");
     const [isFlag, setIsFlag] = useState(false);
-    const loanService = new loanService();
+    const loanService = new LoanBookService();
     const [dni, setDni] = useState([""]);
 
     useEffect(() => {
@@ -25,24 +21,22 @@ const LoansBooksComponent = ({ classes }) => {
     //ABM
     const addLoan = () => {
         //debugger;
-        loanService.GenerateLoan(currentLoan).then(res => {
-            setCurrentLoan(emptyLoan);
-            setIsFlag(false);
-            loadGrid();
-            alert("Prestamo Agregado");
-        }).catch(res => {
-            console.error(res);
-            alert(res);
-        });
+        //loanService.GenerateLoan(currentLoan).then(res => {
+        //    setIsFlag(false);
+        //    loadGrid();
+        //    alert("Prestamo Agregado");
+        //}).catch(res => {
+        //    console.error(res);
+        //    alert(res);
+        //});
     }
 
-};
 
 //TABLE
 const loadGrid = () => {
     loanService.GetAllByDni(dni).then(res => {
         console.log(res.data);
-        setLoanbook(res.data);
+        setLoanBooks(res.data);
     }
     ).catch(res => {
         console.log("Error")
@@ -56,11 +50,12 @@ return (
                 <Grid item xs={12}>
                     <Paper elevation={0} className={classes.paper}>
                         <LoanForm
-                            Loan={currentLoan}
-                            setLoan={(loan) => setCurrentLoan(loan)}
-                            handleAddLoan={addLoan}
-                            dni={dni}
-                            setDni={setDni}
+                        book={book}
+                        setBook={setBook}
+                        handleAddLoan={addLoan}
+                        dni={dni}
+                        setDni={setDni}
+                        loadGrid={loadGrid}
                         ></LoanForm>
                     </Paper>
                 </Grid>
@@ -70,7 +65,7 @@ return (
                         </Typography>
                     <Paper elevation={0} className={classes.paper}>
                         <LoanTable
-                            loans={loans}
+                        loanBooks={loanBooks}
                         />
                     </Paper>
                 </Grid>

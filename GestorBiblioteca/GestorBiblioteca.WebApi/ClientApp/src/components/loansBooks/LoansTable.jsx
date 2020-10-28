@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     }
 });
 
-const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
+const LoansTable = ({ loanBooks }) => {
     const classes = useStyles();
     debugger;
     return (
@@ -29,20 +29,22 @@ const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
             <Table className={classes.table} size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow>
-                        <TableCell className={classes.tableCell}>Nombre</TableCell>
-                        <TableCell className={classes.tableCell} align="right">Apellido</TableCell>
-                        <TableCell className={classes.tableCell} align="right">DNI</TableCell>
-                        <TableCell className={classes.tableCell} align="right"></TableCell>
+                        <TableCell className={classes.tableCell}>ID</TableCell>
+                        <TableCell className={classes.tableCell} align="right">Titulo</TableCell>
+                        <TableCell className={classes.tableCell} align="right">Autor</TableCell>
+                        <TableCell className={classes.tableCell} align="right">Editorial</TableCell>
+                        <TableCell className={classes.tableCell} align="right">Fecha de prestamo</TableCell>
+                        <TableCell className={classes.tableCell} align="right">Fecha de devolucion</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {clients.map((row) => (
-                        <TableRow key={row.idcliente}>
-                            <TableCell component="th" scope="row">{row.nombre}</TableCell>
-                            <TableCell align="right">{row.apellido}</TableCell>
-                            <TableCell align="right">{row.dni}</TableCell>
-                            <TableCell align="right">
-                            </TableCell>
+                    {loanBooks.map((row) => (
+                        <TableRow key={row.idLoan}>
+                            <TableCell component="th" scope="row">{row.idLoan}</TableCell>
+                            <TableCell align="right">{row.book.title}</TableCell>
+                            <TableCell align="right">{row.book.author}</TableCell>
+                            <TableCell align="right">{row.loanDate}</TableCell>
+                            <TableCell align="right">{row.returnDate}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -50,4 +52,4 @@ const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
         </TableContainer>
     );
 }
-export default ClientTable;
+export default LoansTable;
