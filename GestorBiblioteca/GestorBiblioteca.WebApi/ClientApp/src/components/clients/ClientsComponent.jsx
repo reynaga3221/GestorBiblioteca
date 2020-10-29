@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import themeStyles from '../../styles/styles';
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, Paper, TextField, Typography } from '@material-ui/core';
-import ClientsService from '../../services/ClientsService';
+import loanService from '../../services/ClientsService';
 import ClientsForm from './ClientsForm';
 import ClientsTable from "./ClientsTable";
 
@@ -15,7 +15,7 @@ const ClientsComponent = ({ classes }) => {
     const [Clients, setClients] = useState([]);
     const [currentClient, setCurrentClient] = useState(emptyClient);
     const [isEditing, setIsEditing] = useState(false);
-    const ClientService = new ClientsService();
+    const ClientService = new loanService();
 
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const ClientsComponent = ({ classes }) => {
 
     //ABM
     const addOrUpdateClient = () => {
-        debugger;
+
         if (isEditing) {
             ClientService.UpdateClient(currentClient).then(res => {
                 setCurrentClient(emptyClient);
@@ -75,7 +75,7 @@ const ClientsComponent = ({ classes }) => {
     };*/
 
     const editSelection = (idClient) => {
-        debugger;
+
         ClientService.GetClientById(idClient).then(res => {
             setIsEditing(true);
             setCurrentClient(res.data);

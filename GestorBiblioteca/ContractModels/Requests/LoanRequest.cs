@@ -7,7 +7,7 @@ namespace GestorBiblioteca.ContractModels.Requests
     public class LoanRequest
     {
         public int IdLoan { get; set; }
-        public int IdBook { get; set; }
-        public int idcliente { get; set; }       
+        public string IdBook { get; set; }
+        public int  idcliente { get; set; }       
     }
 }
