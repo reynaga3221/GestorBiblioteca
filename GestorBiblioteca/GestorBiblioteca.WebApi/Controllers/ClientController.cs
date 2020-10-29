@@ -39,6 +39,16 @@ namespace GestorBiblioteca.WebApi.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("GetByDni/{dni}")]
+        public IActionResult GetByDni(string dni)
+        {
+
+            var response = _mapper.Map<ClientResponse>(_ClientService.GetByDni(Convert.ToInt32(dni)));
+
+            return Ok(response);
+        }
+
         [HttpPut]
         public IActionResult Put(ClientRequets ClientRequets)
         {

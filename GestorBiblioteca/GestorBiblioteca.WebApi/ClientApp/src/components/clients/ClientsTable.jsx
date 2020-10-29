@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 const ClientTable = ({ clients, handleDeleteClient, handleEditSelection }) => {
     const classes = useStyles();
-    debugger;
+
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} size="small" aria-label="a dense table">

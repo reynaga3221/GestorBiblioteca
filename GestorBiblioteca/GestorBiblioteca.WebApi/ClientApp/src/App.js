@@ -12,19 +12,22 @@ const App = () => {
 
 
     const _userService = new UserService();
-    const [isLogin, setIsLogin] = useState([false]);
+    const [isLogin, setIsLogin] = useState(["false"]);
     const [currentUser, setCurrentUser] = useState([loginRequest]);
 
-    //useEffect(() => {
-    //    Login();
-    //}, []);
+    useEffect(() => {
+       // const loggedInUser = localStorage.getItem("user");        
+        setIsLogin(localStorage['user']);
+    }, []);
 
     const LoginApp = () => {
-        debugger;
+
         _userService.Login(currentUser).then(res => {
-            console.log(res.data);
-            debugger;
-            setIsLogin(res.data);
+
+            localStorage.setItem('user', res.data)
+          //  console.log(res.data);
+          //  debugger;
+            window.location.reload();
         }
         ).catch(res => {
             console.log("Error")
@@ -34,7 +37,7 @@ const App = () => {
     return (   
        <>
             {
-                isLogin == true ?
+                isLogin == "true" ?
                     <Sidebar /> : <Login handleLogin={LoginApp} isLogin={isLogin} user={currentUser} setUser={(user) => setCurrentUser(user)}/> 
                   
             }

@@ -1,11 +1,97 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import themeStyles from '../../styles/styles';
+import { withStyles } from "@material-ui/core/styles";
+import { Grid, Paper, TextField, Typography } from '@material-ui/core';
+import LoanBookService from '../../services/LoanBookService';
+import ClientsService from '../../services/ClientsService';
+import LoanForm from './LoansForm';
+import LoanTable from "./LoansTable";
+import LoansTable from "./LoansTable";
 
-const LoansBooksComponent = () => {
+
+let emptyClient = {
+    idcliente: 0, nombre: '', apellido: '', dni: '', telefono: '', mail: ''
+};
+
+const LoansBooksComponent = ({ classes }) => {
+
+    const [loanBooks, setLoanBooks] = useState([]);
+    const [idBook, setIdBook] = useState("");   
+    const [client, setClient] = useState(emptyClient);
+    const [dni, setDni] = useState("");
+    const loanService = new LoanBookService();
+    const _clientService = new ClientsService();
+
+    useEffect(() => {
+
+    }, []);
+
+    //ABM
+    const addLoan = () => {
+       
+        loanService.AddLoanBook(client.idcliente, idBook).then(res => {
+            
+            loadGrid();
+            alert("Prestamo Agregado");
+        }).catch(res => {
+            console.error(res);
+            alert(res);
+        });
+    }
+
+
+    //TABLE
+    const loadGrid = () => {
+        loanService.GetAllByDni(dni).then(res => {
+
+            setLoanBooks(res.data);
+        }
+        ).catch(res => {
+            console.log("Error")
+        });
+
+        _clientService.GetClientByDni(dni).then(res => {
+            console.log(res.data);
+            setClient(res.data);
+        }
+        ).catch(res => {
+            console.log("Error")
+        });
+    }
 
     return (
-        <>
-            Libros Prestados
-        </>
-    )
+
+        <div className={classes.root}>
+            <Grid container spacing={2}>
+                <Typography variant="h6" gutterBottom>
+                    {
+                        'Realizar Prestamo'
+                    }
+                </Typography>
+                <Grid item xs={12}>
+                    <Paper elevation={0} className={classes.paper}>
+                        <LoanForm
+                            client={client}
+                            idBook={idBook}
+                            setIdBook={setIdBook}
+                            handleAddLoan={addLoan}
+                            dni={dni}
+                            setDni={setDni}
+                            loadGrid={loadGrid}
+                        ></LoanForm>
+                    </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                    <Typography variant="h6" gutterBottom>
+                        Lista de Prestamos
+                        </Typography>
+                    <Paper elevation={0} className={classes.paper}>
+                        <LoansTable loanBooks={loanBooks }></LoansTable>
+                    </Paper>
+                </Grid>
+            </Grid>
+        </div>
+
+    );
 }
-export default LoansBooksComponent;
+export default withStyles(themeStyles)(LoansBooksComponent);
