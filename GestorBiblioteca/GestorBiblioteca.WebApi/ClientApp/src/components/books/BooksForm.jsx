@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { Grid, TextField, Button } from '@material-ui/core';
+import { Grid, TextField, Button, Typography } from '@material-ui/core';
 import themeStyles from '../../styles/styles';
 import DatePicker from "../utility/DatePicker";
 
@@ -18,9 +18,18 @@ const BooksForm = ({ classes, book, setBook, handleSetSelectedDate, handleAddBoo
 
     return (
         <>
-            <Grid item xs={6}>
-                <TextField value={book.author ? book.author : ''} label="Autor" variant="outlined" size="small" onChange={(e) => setBook({ ...book, author: e.target.value })} style={{ marginBottom: 20, marginRight: 20 }} />
-                <TextField value={book.title ? book.title : ''} label="Titulo" variant="outlined" size="small" onChange={(e) => setBook({ ...book, title: e.target.value })} style={{ marginRight: 20 }} />
+            <Grid container justify="flex-end"  item xs={12}>
+                <Grid item xs={4}>
+                    <TextField value={book.author ? book.author : ''} label="Autor" variant="outlined" size="small" onChange={(e) => setBook({ ...book, author: e.target.value })} style={{ marginBottom: 20, marginRight: 20 }} />
+                    <TextField value={book.title ? book.title : ''} label="Titulo" variant="outlined" size="small" onChange={(e) => setBook({ ...book, title: e.target.value })} style={{ marginRight: 20 }} />
+                </Grid>
+                <Grid item xs={6}>                
+                </Grid>            
+                <Grid item xs={2}>
+                    <Typography variant="h6" gutterBottom>
+                        Pepito Flores Dni 405421312
+                        </Typography>
+                </Grid>            
             </Grid>
             <Grid item xs={6}>                
                 {/*   <TextField value={book.publishedDate ? book.publishedDate : ''} label="Fecha de Publicacion" variant="outlined" size="small" onChange={(e) => setBook({ ...book, publishedDate: e.target.value })} style={{ marginBottom: 20, marginRight: 20 }} />  */}

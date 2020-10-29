@@ -3,18 +3,29 @@ import BaseService from './BaseService';
 export default class LoanBookService extends BaseService {
 
     GetAllByDni(dni) {
-        debugger;
+
         return super.Get('/Loan/GetAllByDni/'+ dni);
     }
 
-    AddLoanBook(loan) {
+    AddLoanBook(idClient, idBook) {
+
+        let param = {
+            idLoan:0,
+            idcliente: idClient,
+            idBook: idBook
+        }
         debugger;
-        return super.Post('/Loan', loan);
+        return super.Post('/Loan', param);
     }
 
-    UpdateLoanBook(loan) {
-        return super.Put('/Loan', loan
-        );
+    UpdateLoanBook(idLoan, idClient, idBook) {
+        debugger;
+        let param = {
+            idLoan: idLoan,
+            idcliente: idClient,
+            idBook: idBook.toString()
+        }
+        return super.Put('/Loan', param);
     }
 
 }

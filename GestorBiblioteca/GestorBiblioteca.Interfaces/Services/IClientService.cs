@@ -11,6 +11,7 @@ namespace GestorBiblioteca.Interfaces.Services
         void Create(Clients domain);
         void Delete(int id);
         Clients GetById(int id);
+        Clients GetByDni(int dni);
         IEnumerable<Clients> GetAll();
     }
 }

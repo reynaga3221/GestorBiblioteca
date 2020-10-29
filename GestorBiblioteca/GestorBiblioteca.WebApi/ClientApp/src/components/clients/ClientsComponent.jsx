@@ -24,7 +24,7 @@ const ClientsComponent = ({ classes }) => {
 
     //ABM
     const addOrUpdateClient = () => {
-        debugger;
+
         if (isEditing) {
             ClientService.UpdateClient(currentClient).then(res => {
                 setCurrentClient(emptyClient);
@@ -75,7 +75,7 @@ const ClientsComponent = ({ classes }) => {
     };*/
 
     const editSelection = (idClient) => {
-        debugger;
+
         ClientService.GetClientById(idClient).then(res => {
             setIsEditing(true);
             setCurrentClient(res.data);

@@ -10,8 +10,12 @@ export default class loanService extends BaseService {
         return super.GetResource('/Client', id);
     }
 
+    GetClientByDni(dni) {
+        return super.Get('/Client/GetByDni/' + dni);
+    }
+
     AddClient(client) {
-        debugger;
+      
         return super.Post('/Client', client);
     }
 

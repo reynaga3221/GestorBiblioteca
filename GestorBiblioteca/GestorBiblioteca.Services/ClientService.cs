@@ -28,6 +28,10 @@ namespace GestorBiblioteca.Services
         {
             return _repository.GetAll().Where(x => x.Idcliente == idcliente).FirstOrDefault();
         }
+        public Clients GetByDni(int dni)
+        {
+            return _repository.GetAll().Where(x => x.DNI == dni).FirstOrDefault();
+        }
         public IEnumerable<Clients> GetAll()
         {
             return _repository.GetAll();

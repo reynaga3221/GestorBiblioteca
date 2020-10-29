@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import ReplyAllIcon from '@material-ui/icons/ReplyAll';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -22,6 +23,7 @@ import { Link } from "react-router-dom";
 import BooksComponent from '../books/BooksComponent';
 import ClientsComponent from '../clients/ClientsComponent';
 import HomeComponent from '../home/HomeComponent';
+import ReturnBooksComponent from '../loansBooks/ReturnBooks/ReturnBooksComponent';
 import LoansBooksComponent from '../loansBooks/LoansBooksComponent';
 import inquirieBooksComponent from '../inquiries/inquirieBooksComponent';
 import SendIcon from '@material-ui/icons/Send';
@@ -183,6 +185,12 @@ export default function Sidebar() {
                                 <ListItemText primary={"Prestamos"} />
                             </ListItem>
                         </Link>
+                        <Link to='./returns'>
+                            <ListItem button key={"Devoluciones"}>
+                                <ListItemIcon> <ReplyAllIcon color="primary" /></ListItemIcon>
+                                <ListItemText primary={"Devoluciones"} />
+                            </ListItem>
+                        </Link>
                         <Link to='./inquirie'>
                             <ListItem button key={"Consultas"}>
                                 <ListItemIcon> <AssessmentIcon color="primary" /></ListItemIcon>
@@ -198,6 +206,7 @@ export default function Sidebar() {
                             <Route exact path="/clients" component={ClientsComponent} />
                             <Route exact path="/books" component={BooksComponent} />
                             <Route exact path="/loans" component={LoansBooksComponent} />
+                            <Route exact path="/returns" component={ReturnBooksComponent} />
                             <Route exact path="/inquirie" component={inquirieBooksComponent} />
                         </Switch>
                 </main>

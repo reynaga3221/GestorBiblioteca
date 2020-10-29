@@ -3,16 +3,24 @@ import themeStyles from '../../styles/styles';
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, Paper, TextField, Typography } from '@material-ui/core';
 import LoanBookService from '../../services/LoanBookService';
+import ClientsService from '../../services/ClientsService';
 import LoanForm from './LoansForm';
 import LoanTable from "./LoansTable";
+import LoansTable from "./LoansTable";
+
+
+let emptyClient = {
+    idcliente: 0, nombre: '', apellido: '', dni: '', telefono: '', mail: ''
+};
 
 const LoansBooksComponent = ({ classes }) => {
 
     const [loanBooks, setLoanBooks] = useState([]);
-    const [book, setBook] = useState("");
-    const [isFlag, setIsFlag] = useState(false);
+    const [idBook, setIdBook] = useState("");   
+    const [client, setClient] = useState(emptyClient);
+    const [dni, setDni] = useState("");
     const loanService = new LoanBookService();
-    const [dni, setDni] = useState([""]);
+    const _clientService = new ClientsService();
 
     useEffect(() => {
 
@@ -20,58 +28,70 @@ const LoansBooksComponent = ({ classes }) => {
 
     //ABM
     const addLoan = () => {
-        //debugger;
-        //loanService.GenerateLoan(currentLoan).then(res => {
-        //    setIsFlag(false);
-        //    loadGrid();
-        //    alert("Prestamo Agregado");
-        //}).catch(res => {
-        //    console.error(res);
-        //    alert(res);
-        //});
+       
+        loanService.AddLoanBook(client.idcliente, idBook).then(res => {
+            
+            loadGrid();
+            alert("Prestamo Agregado");
+        }).catch(res => {
+            console.error(res);
+            alert(res);
+        });
     }
 
 
-//TABLE
-const loadGrid = () => {
-    loanService.GetAllByDni(dni).then(res => {
-        console.log(res.data);
-        setLoanBooks(res.data);
-    }
-    ).catch(res => {
-        console.log("Error")
-    });
-}
+    //TABLE
+    const loadGrid = () => {
+        loanService.GetAllByDni(dni).then(res => {
 
-return (
-   
+            setLoanBooks(res.data);
+        }
+        ).catch(res => {
+            console.log("Error")
+        });
+
+        _clientService.GetClientByDni(dni).then(res => {
+            console.log(res.data);
+            setClient(res.data);
+        }
+        ).catch(res => {
+            console.log("Error")
+        });
+    }
+
+    return (
+
         <div className={classes.root}>
             <Grid container spacing={2}>
+                <Typography variant="h6" gutterBottom>
+                    {
+                        'Realizar Prestamo'
+                    }
+                </Typography>
                 <Grid item xs={12}>
                     <Paper elevation={0} className={classes.paper}>
                         <LoanForm
-                        book={book}
-                        setBook={setBook}
-                        handleAddLoan={addLoan}
-                        dni={dni}
-                        setDni={setDni}
-                        loadGrid={loadGrid}
+                            client={client}
+                            idBook={idBook}
+                            setIdBook={setIdBook}
+                            handleAddLoan={addLoan}
+                            dni={dni}
+                            setDni={setDni}
+                            loadGrid={loadGrid}
                         ></LoanForm>
                     </Paper>
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
-                        Lista de Clientes
+                        Lista de Prestamos
                         </Typography>
                     <Paper elevation={0} className={classes.paper}>
-                        <LoanTable
-                        loanBooks={loanBooks}
-                        />
+                        <LoansTable loanBooks={loanBooks }></LoansTable>
                     </Paper>
                 </Grid>
             </Grid>
         </div>
 
-);
+    );
 }
 export default withStyles(themeStyles)(LoansBooksComponent);
