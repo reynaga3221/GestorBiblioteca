@@ -55,5 +55,14 @@ namespace GestorBiblioteca.Services
             _bookService.Update(book);
         }
 
+        public IEnumerable<Loan> GetAllDetors(int dni)
+        {
+            var loans = this.GetAll();
+
+            var DeptorsClient = loans.Where(l => l.Client.DNI == dni).OrderByDescending(l => l.LoanDate);
+
+            return DeptorsClient;
+        }
+
     }
 }

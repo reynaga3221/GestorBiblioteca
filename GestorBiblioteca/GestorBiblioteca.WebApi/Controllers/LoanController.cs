@@ -66,5 +66,13 @@ namespace GestorBiblioteca.WebApi.Controllers
             return Ok(loanRequest);
         }
 
+        [HttpGet("GetAllDetors/{dni}")]
+        public IEnumerable<LoanResponse> GetAllDetors(string dni)
+        {
+            var response = _mapper.Map<IEnumerable<LoanResponse>>(_loanService.GetAllByDni(Convert.ToInt32(dni)));
+
+            return response;
+        }
+
     }
 }
