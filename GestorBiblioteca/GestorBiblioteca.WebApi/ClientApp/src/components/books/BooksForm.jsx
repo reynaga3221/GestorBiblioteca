@@ -27,7 +27,7 @@ const BooksForm = ({ classes, book, setBook, handleSetSelectedDate, handleAddBoo
                 </Grid>            
                 <Grid item xs={2}>
                     <Typography variant="h6" gutterBottom>
-                        Pepito Flores Dni 405421312
+                       
                         </Typography>
                 </Grid>            
             </Grid>
