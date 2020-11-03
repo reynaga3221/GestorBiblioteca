@@ -28,7 +28,7 @@ const InquirieTable = ({ loanBooks }) => {
                         <TableCell className={classes.tableCell}>Id Libro</TableCell>
                         <TableCell className={classes.tableCell} align="right">Titulo</TableCell>
                         <TableCell className={classes.tableCell} align="right">Autor</TableCell>
-                        <TableCell className={classes.tableCell} align="right">CLiente</TableCell>
+                        <TableCell className={classes.tableCell} align="right">Cliente</TableCell>
                         <TableCell className={classes.tableCell} align="right">telefono</TableCell>
                         <TableCell className={classes.tableCell} align="right">Fecha de prestamo</TableCell>
                         <TableCell className={classes.tableCell} align="right">Fecha de devolucion</TableCell>
@@ -37,7 +37,7 @@ const InquirieTable = ({ loanBooks }) => {
                 <TableBody>
                     {loanBooks.map((row) => (
                         <TableRow key={row.idLoan}>
-                            <TableCell component="th" scope="row">{row.idLoan}</TableCell>
+                            <TableCell component="th" scope="row">{row.book.idBook}</TableCell>
                             <TableCell align="right">{row.book.title}</TableCell>
                             <TableCell align="right">{row.book.author}</TableCell>
                             <TableCell align="right">{row.client.nombre}</TableCell>

@@ -13,5 +13,7 @@ namespace GestorBiblioteca.Interfaces.Services
 
         void GenerateLoan(Loan domain);
         void ReturnBook(Loan domain);
+        IEnumerable<Loan> GetAllDetors();
+        IEnumerable<Loan> GetAllDetorsByDni(int dni);
     }
 }

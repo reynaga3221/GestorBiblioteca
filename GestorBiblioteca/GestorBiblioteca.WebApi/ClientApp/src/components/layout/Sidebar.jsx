@@ -25,7 +25,7 @@ import ClientsComponent from '../clients/ClientsComponent';
 import HomeComponent from '../home/HomeComponent';
 import ReturnBooksComponent from '../loansBooks/ReturnBooks/ReturnBooksComponent';
 import LoansBooksComponent from '../loansBooks/LoansBooksComponent';
-import inquirieBooksComponent from '../inquiries/inquirieBooksComponent';
+import InquirieBooksComponent from '../inquiries/InquirieBooksComponent';
 import SendIcon from '@material-ui/icons/Send';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import Login from './Login';
@@ -207,7 +207,7 @@ export default function Sidebar() {
                             <Route exact path="/books" component={BooksComponent} />
                             <Route exact path="/loans" component={LoansBooksComponent} />
                             <Route exact path="/returns" component={ReturnBooksComponent} />
-                            <Route exact path="/inquirie" component={inquirieBooksComponent} />
+                            <Route exact path="/inquirie" component={InquirieBooksComponent} />
                         </Switch>
                 </main>
             </Router>

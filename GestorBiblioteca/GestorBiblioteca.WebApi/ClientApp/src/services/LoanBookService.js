@@ -7,6 +7,23 @@ export default class LoanBookService extends BaseService {
         return super.Get('/Loan/GetAllByDni/'+ dni);
     }
 
+
+    GetAll() {
+
+        return super.Get('/Loan');
+    }
+
+    GetAllDetors() {
+
+        return super.Get('/Loan/GetAllDetors');
+    }
+
+    GetAllDetorsByDni(dni) {
+
+        return super.Get('/Loan/GetAllDetorsByDni/'+ dni);
+    }
+
+
     AddLoanBook(idClient, idBook) {
 
         let param = {

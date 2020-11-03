@@ -55,11 +55,19 @@ namespace GestorBiblioteca.Services
             _bookService.Update(book);
         }
 
-        public IEnumerable<Loan> GetAllDetors(int dni)
+        public IEnumerable<Loan> GetAllDetorsByDni(int dni)
         {
             var loans = this.GetAll();
 
-            var DeptorsClient = loans.Where(l => l.Client.DNI == dni).OrderByDescending(l => l.LoanDate);
+            var DeptorsClient = loans.Where(l => l.Client.DNI == dni && l.ReturnDate == null && (DateTime.Now - l.LoanDate).Value.Days >= 14);
+
+            return DeptorsClient;
+        }
+        public IEnumerable<Loan> GetAllDetors()
+        {
+            var loans = this.GetAll();
+
+            var DeptorsClient = loans.Where(l => l.ReturnDate == null && (DateTime.Now - l.LoanDate).Value.Days >= 14).OrderBy(l => l.LoanDate);
 
             return DeptorsClient;
         }
