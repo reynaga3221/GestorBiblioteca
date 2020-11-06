@@ -12,5 +12,6 @@ namespace GestorBiblioteca.Interfaces.Services
         void Delete(int id);
         Book GetById(int id);
         IEnumerable<Book> GetAll();
+        IEnumerable<Book> GetAllByTittle(string tittle);
     }
 }

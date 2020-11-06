@@ -6,10 +6,6 @@ import LoanBookService from '../../services/LoanBookService';
 import InquirieTable from "./InquirieTable";
 
 
-let emptyClient = {
-    idcliente: 0, nombre: '', apellido: '', dni: '', telefono: '', mail: ''
-};
-
 const InquirieBooksComponent = ({ classes }) => {
 
     const [loanBooks, setLoanBooks] = useState([]);

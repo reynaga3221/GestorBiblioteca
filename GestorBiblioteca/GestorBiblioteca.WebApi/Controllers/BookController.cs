@@ -40,6 +40,15 @@ namespace GestorBiblioteca.WebApi.Controllers
             return Ok(response);
         }
 
+        [HttpGet("GetByTitle/{title}")]
+        public IActionResult GetByTitle(string title)
+        {
+
+            var response = _mapper.Map<IEnumerable<BookResponse>>(_bookService.GetAllByTittle(title));
+
+            return Ok(response);
+        }
+
         [HttpPut]     
         public IActionResult Put(BookRequets bookRequets)
         {

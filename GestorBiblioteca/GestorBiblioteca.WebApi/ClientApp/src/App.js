@@ -17,17 +17,20 @@ const App = () => {
 
     useEffect(() => {
        // const loggedInUser = localStorage.getItem("user");        
-        setIsLogin(localStorage['user']);
+        setIsLogin(sessionStorage['user']);
     }, []);
 
     const LoginApp = () => {
 
         _userService.Login(currentUser).then(res => {
 
-            localStorage.setItem('user', res.data)
+            sessionStorage.setItem('user', res.data)
           //  console.log(res.data);
           //  debugger;
-            window.location.reload();
+            if (res.data == true )
+                window.location.reload();
+            else
+                alert("Credenciales Incorrectas")
         }
         ).catch(res => {
             console.log("Error")

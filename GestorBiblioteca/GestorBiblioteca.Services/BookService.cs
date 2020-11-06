@@ -32,6 +32,11 @@ namespace GestorBiblioteca.Services
         {
             return _repository.GetAll();
         }
+
+        public IEnumerable<Book> GetAllByTittle(string tittle)
+        {
+            return _repository.GetAll().Where(x=> x.Title.ToUpper().Contains(tittle.ToUpper()));
+        }
         public void Delete(int id)
         {
             _repository.Delete(id);

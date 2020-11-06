@@ -10,6 +10,10 @@ export default class BookService extends BaseService {
         return super.GetResource('/Book', id);
     }
 
+    GetAllByTittle(title) {
+        return super.Get('/Book/GetByTitle/' + title);
+    }
+
     AddBook(book) {
   
         return super.Post('/Book', book);

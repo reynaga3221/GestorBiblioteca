@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect } from "react";
 import themeStyles from '../../styles/styles';
 import { withStyles } from "@material-ui/core/styles";
-import { Grid, Paper,TextField, Typography } from '@material-ui/core';
+import { Grid, Paper,TextField, Typography, Button } from '@material-ui/core';
 import BookService from '../../services/BookService';
 import BooksForm from './BooksForm';
 import BookTable from "./BooksTable";
@@ -10,11 +10,15 @@ let emptyBook = {
     idBook: 0, title: '', author: '', totalQuantity: '', publishedDate: '2000/08/18'
 };
 
+let emptyBook2 = {
+    idBook: 0, title: '', author: '', totalQuantity: '', publishedDate: '2000/08/18'
+};
 const BooksComponent = ({ classes }) => {
 
     const [books, setBooks] = useState([]);
     const [currentBook, setCurrentBook] = useState(emptyBook);
     const [isEditing, setIsEditing] = useState(false);
+    const [bookSearch, setBookSearch] = useState(emptyBook2);
     const bookService = new BookService();
 
     
@@ -52,6 +56,15 @@ const BooksComponent = ({ classes }) => {
 
     const deleteBook = () => {
         console.log("delete");
+    };
+
+    const searchBook = () => {
+        debugger;
+        bookService.GetAllByTittle(bookSearch.title).then(res => {
+            setBooks(res.data);
+        }).catch(res =>
+            console.log(res)
+        );
     };
 
     //FORM
@@ -110,9 +123,21 @@ const BooksComponent = ({ classes }) => {
                     </Paper>
                 </Grid>
                     <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom>
-                            Lista de Libros
-                        </Typography>
+                        <Grid container justify="flex-end" item xs={12}>
+                            <Grid item xs={4}>
+                                <Typography variant="h6" gutterBottom>
+                                    Lista de Libros
+                              </Typography>
+                            </Grid>
+                            <Grid item xs={4}>
+                            </Grid>
+                            <Grid item container justify="flex-end" xs={4}>
+                                <TextField value={bookSearch.title ? bookSearch.title : ''} label="Titulo" variant="outlined" size="small" onChange={(e) => setBookSearch({ ...bookSearch, title: e.target.value })} style={{ marginBottom: 5, marginRight: 10 }} />
+                                <Button color="primary" onClick={searchBook} style={{ marginRight: 5 }} > Buscar</Button>
+                                <Button color="primary" onClick={loadGrid} style={{ marginRight: 5 }} > Cancelar</Button>
+                            </Grid>
+                        </Grid>
+                      
                     <Paper elevation={0} className={classes.paper}>
                             <BookTable                                
                                 books={books}
