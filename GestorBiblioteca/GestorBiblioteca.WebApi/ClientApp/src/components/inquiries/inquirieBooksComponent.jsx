@@ -18,6 +18,7 @@ const InquirieBooksComponent = ({ classes }) => {
 
     //TABLE
     const loadGrid = () => {
+
         loanService.GetAllDetors().then(res => {
 
             setLoanBooks(res.data);
