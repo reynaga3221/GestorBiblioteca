@@ -35,6 +35,12 @@ namespace GestorBiblioteca.Services
         {
             try
             {
+
+                if (domain.IdBook == 0)
+                {
+                    throw new ArgumentException("Ingrese un Libro.", "Error de logica");
+                }
+
                 var book = _bookService.GetById(domain.IdBook);
                 
                 book.TotalQuantity = Convert.ToString(Convert.ToInt32(book.TotalQuantity) - 1);
@@ -58,6 +64,12 @@ namespace GestorBiblioteca.Services
                     throw new ArgumentException("El cliente ya posee un libro adeudado.", "Error de logica");
                 }
 
+                if(domain.idcliente == 0)
+                {
+                    throw new ArgumentException("No se identifico el cliente.", "Error de logica");
+                }
+
+               
                 _repository.Save(domain);
                 _bookService.Update(book);
             }

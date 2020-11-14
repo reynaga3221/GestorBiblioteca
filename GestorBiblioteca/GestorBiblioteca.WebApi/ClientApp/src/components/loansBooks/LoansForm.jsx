@@ -25,7 +25,7 @@ const LoanForm = ({ client, dni, idBook, setDni, setIdBook, handleAddLoan, loadG
 
                     <Typography variant="h6" gutterBottom>
                         {
-                            client.idcliente != 0 ? "DNI: " + client.dni + " " + client.apellido + " " + client.nombre : ""
+                            client.idcliente != 0 ? "Cliente: " + client.dni + " - " + client.apellido + " " + client.nombre : ""
                         }    
                      </Typography>
                 </Grid>

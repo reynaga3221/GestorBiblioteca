@@ -16,7 +16,7 @@ let emptyClient = {
 const LoansBooksComponent = ({ classes }) => {
 
     const [loanBooks, setLoanBooks] = useState([]);
-    const [idBook, setIdBook] = useState("");   
+    const [idBook, setIdBook] = useState("0");   
     const [client, setClient] = useState(emptyClient);
     const [dni, setDni] = useState("");
     const loanService = new LoanBookService();
