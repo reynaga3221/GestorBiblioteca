@@ -34,8 +34,9 @@ const LoansBooksComponent = ({ classes }) => {
             loadGrid();
             alert("Prestamo Agregado");
         }).catch(res => {
-            console.error(res);
-            alert(res);
+            debugger;
+            console.error(res.response.data.message);
+            alert(res.response.data.message);
         });
     }
 

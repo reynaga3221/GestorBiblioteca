@@ -43,11 +43,10 @@ namespace GestorBiblioteca.Repositories
             }
         }
         public void Delete(int id)
-        {
+        {        
             using (var connection = this.GetConnection())
             {
-                var affectedRows = connection.Execute("UPDATE Books SET Title = @Title, Author = @Author, TotalQuantity = @TotalQuantity, PublishedDate = @PublishedDate WHERE IdBook = @IdBook");
-
+                var affectedRows = connection.Execute("DELETE FROM  Books  WHERE IdBook = @IdBook", new { IdBook = id });
             }
         }
     }

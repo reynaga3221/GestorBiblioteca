@@ -54,8 +54,16 @@ const BooksComponent = ({ classes }) => {
     };
 
 
-    const deleteBook = () => {
-        console.log("delete");
+    const deleteBook = (idBook) => {
+        bookService.DeleteBook(idBook).then(res => {
+            setCurrentBook(emptyBook);
+            setIsEditing(false);
+            loadGrid();
+            alert("Libro Eliminado ");
+        }).catch(res => {
+            console.error(res);
+            alert(res);
+        });
     };
 
     const searchBook = () => {
