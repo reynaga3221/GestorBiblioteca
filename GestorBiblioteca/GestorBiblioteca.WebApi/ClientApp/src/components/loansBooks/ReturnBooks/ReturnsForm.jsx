@@ -11,8 +11,7 @@ const ReturnsForm = ({ client, dni, setDni, loadGrid }) => {
         <>
             <Grid container item xs={12}>
                 <Grid item xs={5}>
-                    <TextField value={dni} label="dni" variant="outlined" size="small" onChange={event => setDni(event.target.value)} style={{ marginBottom: 20, marginRight: 20 }} />
-                    <TextField value={""} label="Apellido" variant="outlined" size="small" style={{ marginRight: 20 }} />
+                    <TextField value={dni} label="dni" variant="outlined" size="small" onChange={event => setDni(event.target.value)} style={{ marginBottom: 20, marginRight: 20 }} />              
                     <Button color="primary" onClick={() => loadGrid()}>Buscar</Button>
                 </Grid>
                 <Grid item xs={5}>

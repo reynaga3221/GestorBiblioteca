@@ -101,6 +101,7 @@ const BooksComponent = ({ classes }) => {
     const loadGrid = () => {
         bookService.GetBooks().then(res => {
             console.log(res.data);
+            setBookSearch(emptyBook2);
             setBooks(res.data);
         }
         ).catch(res => {
