@@ -39,6 +39,11 @@ const InquirieBooksComponent = ({ classes }) => {
 
     }
 
+    const clearEmpty = () => {
+        setDni("");
+        loadGrid();
+    }
+
     return (
 
         <div className={classes.root}>
@@ -54,6 +59,7 @@ const InquirieBooksComponent = ({ classes }) => {
                             <Grid item xs={5}>
                                 <TextField value={dni} label="dni" variant="outlined" size="small" onChange={event => setDni(event.target.value)} style={{ marginBottom: 20, marginRight: 20 }} />
                                 <Button color="primary" onClick={() => loadGridByDni()}>Buscar</Button>
+                                <Button color="secondary" onClick={() => clearEmpty()}>Cancelar</Button>
                             </Grid>
                         </Grid>
                     </Paper>

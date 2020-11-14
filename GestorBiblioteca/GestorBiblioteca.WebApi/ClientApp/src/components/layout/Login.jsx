@@ -10,14 +10,14 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-//import Background from '../../../public/biblio.jpg';
+import Background from '../../styles/biblio.jpg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         height: '100vh',
     },
     image: {
-        // backgroundImage: //`url(${Background})`,
+        backgroundImage: 'url("' + Background + '")',
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         margin: theme.spacing(8, 4),
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column',  
         alignItems: 'center',
     },
     avatar: {

@@ -59,7 +59,7 @@ const BookTable = ({ books, handleDeleteBook, handleEditSelection }) => {
                                     label="Eliminar"
                                     clickable
                                     color="secondary"
-                                    onClick={handleDeleteBook}
+                                        onClick={() => handleDeleteBook(row.idBook)}
                                     icon={<DoneIcon />}
                                     />
                                 </Button>
